@@ -1,9 +1,6 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import { FaSignInAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-
 import { Button, Card, CardBody, CardTitle, Container, Row, Col, Form, FormGroup, Input, Label } from 'reactstrap';
 
 export default class Register extends Component {
@@ -13,12 +10,16 @@ export default class Register extends Component {
     this.onChangeemail = this.onChangeemail.bind(this);
     this.onChangepwd = this.onChangepwd.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.changerouter = this.changerouter.bind(this);
 
     this.state = {
-      email: 'bhayanisumit@gmail.com',
-      pwd: '12345678',
+      email: ' ',
+      pwd: '',
       url: 'https://engine-staging.viame.ae/assessment/'
     }
+  }
+  changerouter(){
+    this.props.history.push("/");
   }
 
   onChangeemail(e) {
@@ -81,8 +82,9 @@ export default class Register extends Component {
                       <Input type="password" value={this.state.pwd} onChange={this.onChangepwd} />
                     </FormGroup>
                     <CardTitle>
-                      <Button color="primary"><FaSignInAlt /></Button>{' '}
-                      <p className="mt-1"><Link to={'/'} className="nav-link">Login</Link></p>
+                      <Button color="primary">Register</Button>{' '}
+                      <Button onClick={this.changerouter} color="primary">Login</Button>{' '}
+                      
                     </CardTitle>
                   </Form>
                 </CardBody>
